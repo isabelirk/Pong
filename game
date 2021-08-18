@@ -1,0 +1,21 @@
+let xBall = 300;
+let yBall = 200;
+let diameter = 18;
+
+let velocityXBall = 6;
+let velocityYBall = 6;
+
+function setup() { //fundo
+  createCanvas(600, 400); //comprimento, altura
+}
+
+function draw() {
+  background(0);//cor do fundo
+  
+  //o ponto (0,0) fica no canto superior esquerdo
+  circle(xBall, yBall, diameter);//posição eixo x, y, diametro
+  
+  //movimentação da bolinha
+  xBall += velocityXBall;
+  yBall += velocityYBall;
+}
