@@ -16,6 +16,16 @@ function draw() {
   circle(xBall, yBall, diameter);//posição eixo x, y, diametro
   
   //movimentação da bolinha
-  xBall += velocityXBall;
+  xBall += velocityXBall; 
   yBall += velocityYBall;
+  
+  if (xBall > width || xBall < 0) { //se a bolinha colide com a borda
+    velocityXBall *= -1; //inverte a velocidade
+  }
+  
+  if (yBall > height || yBall < 0){ //se a bolinha colide na altura máxima
+    velocityYBall *= -1;
+  }
+  
+  
 }
