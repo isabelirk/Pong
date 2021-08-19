@@ -1,8 +1,10 @@
+//variáveis da bolinha
 let xBall = 300;
 let yBall = 200;
 let diameter = 18;
 let lightning = diameter / 2;
 
+//variáveis da velocidade da bolinha
 let velocityXBall = 6;
 let velocityYBall = 6;
 
@@ -12,15 +14,25 @@ function setup() { //fundo
 
 function draw() {
   background(0);//cor do fundo
-  
+  showBall();
+  movesBall();
+  checkEdgeCollision();
+}
+
+function showBall () {
   //o ponto (0,0) fica no canto superior esquerdo
   circle(xBall, yBall, diameter);//posição eixo x, y, diametro
-  
+}
+
+function movesBall () {
   //movimentação da bolinha
   xBall += velocityXBall; 
   yBall += velocityYBall;
-  
-  //a colisão da bolinha é reconhecida na borda da bolinha e não no seu ponto central (raio)
+}
+
+//verifica colisão borda
+function checkEdgeCollision () {
+ //a colisão da bolinha é reconhecida na borda da bolinha e não no seu ponto central (raio)
   if (xBall + lightning > width || xBall - lightning < 0) { //se a bolinha colide com a borda
     velocityXBall *= -1; //inverte a velocidade
   }
@@ -28,5 +40,4 @@ function draw() {
   if (yBall + lightning > height || yBall - lightning < 0){ //se a bolinha colide na altura máxima
     velocityYBall *= -1;
   }
-  
 }
