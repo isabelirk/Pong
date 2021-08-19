@@ -8,6 +8,12 @@ let lightning = diameter / 2;
 let velocityXBall = 6;
 let velocityYBall = 6;
 
+//variáveis da raquete
+let xRacket = 5;
+let yracket = 150;
+let racketLength = 10;
+let racketHeight = 90;
+
 function setup() { //fundo
   createCanvas(600, 400); //comprimento, altura
 }
@@ -17,6 +23,7 @@ function draw() {
   showBall();
   movesBall();
   checkEdgeCollision();
+  showRacket();
 }
 
 function showBall () {
@@ -40,4 +47,8 @@ function checkEdgeCollision () {
   if (yBall + lightning > height || yBall - lightning < 0){ //se a bolinha colide na altura máxima
     velocityYBall *= -1;
   }
+}
+
+function showRacket () {
+  rect(xRacket, yracket, racketLength, racketHeight);
 }
