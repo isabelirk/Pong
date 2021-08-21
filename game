@@ -24,6 +24,7 @@ function draw() {
   movesBall();
   checkEdgeCollision();
   showRacket();
+  moveRacket();
 }
 
 function showBall () {
@@ -51,4 +52,14 @@ function checkEdgeCollision () {
 
 function showRacket () {
   rect(xRacket, yracket, racketLength, racketHeight);
+}
+
+//movimentação da raquete (para funcionar precisa clicar no quadrado do jogo - site p5.js)
+function moveRacket () {
+  if (keyIsDown (UP_ARROW)){
+    yracket -= 10;
+  }
+  if (keyIsDown (DOWN_ARROW)){
+    yracket += 10;
+  }
 }
