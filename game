@@ -10,21 +10,22 @@ let velocityYBall = 6;
 
 //variáveis da raquete
 let xRacket = 5;
-let yracket = 150;
+let yRacket = 150;
 let racketLength = 10;
 let racketHeight = 90;
 
-function setup() { //fundo
+function setup () { //fundo
   createCanvas(600, 400); //comprimento, altura
 }
 
-function draw() {
+function draw () {
   background(0);//cor do fundo
   showBall();
   movesBall();
   checkEdgeCollision();
   showRacket();
   moveRacket();
+  checkRacketCollision();
 }
 
 function showBall () {
@@ -51,15 +52,25 @@ function checkEdgeCollision () {
 }
 
 function showRacket () {
-  rect(xRacket, yracket, racketLength, racketHeight);
+  rect(xRacket, yRacket, racketLength, racketHeight);
 }
 
 //movimentação da raquete (para funcionar precisa clicar no quadrado do jogo - site p5.js)
 function moveRacket () {
   if (keyIsDown (UP_ARROW)){
-    yracket -= 10;
+    yRacket -= 10;
   }
   if (keyIsDown (DOWN_ARROW)){
-    yracket += 10;
+    yRacket += 10;
+  }
+}
+
+//verifica a colisão da raquete com a bolinha
+function checkRacketCollision () {
+  //quando a raquete está na posição inicial 
+  //quando a raquete está na parte superior da tela (em cima da bolinha)
+  //quando a raquete está na parte inferior da tela (em baixo da bolinha)
+  if (xBall - lightning < xRacket + racketLength && yBall - lightning < yRacket + racketHeight && yBall + lightning > yRacket) {
+    velocityXBall *= -1;
   }
 }
